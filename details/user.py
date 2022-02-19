@@ -24,4 +24,21 @@ class User:
         '''
         User.users_list.append(self)
         
-    
+    @classmethod
+    def show_user(cls):
+        '''
+        return user list
+
+        '''
+        return cls.users_list
+        
+    def find_user_name(cls, user_name):
+        '''
+        function to find a user by their user name
+        '''
+
+        for user in cls.users_list:
+            if user.user_name == user_name:
+                return user_name
+
+        
