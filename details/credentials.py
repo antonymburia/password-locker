@@ -21,5 +21,17 @@ class Credentials:
         self.user_name = user_name
         self.password = password
 
-        
+
     @classmethod
+    def validate_user(cls, user_name, password):
+        validate_user = ''
+        for user in User.users_list:
+            if user.user_name == user_name and user.password == password:
+                validate_user = user.user_name
+                return validate_user
+    
+    
+    def save_credentials(self):
+        Credentials.credentials_list.append(self)
+
+    
