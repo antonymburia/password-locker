@@ -35,11 +35,11 @@ def create_credentials(user_account,user_name, password):
 def save_credentials(credentials_list):
     Credentials.save_credentials(credentials_list)
 
-def delete_credentials(credentials_account):
-    Credentials.delete_credentials_account(credentials_account)
+def delete_credentials(credentials_list):
+    Credentials.delete_credentials_account(credentials_list)
 
-def search_credentials(user_account):
-    return Credentials.search_user_credentials(user_account)
+def search_credentials(credentials_list):
+    return Credentials.search_user_credentials(credentials_list)
 
 def list_credentials():
     return Credentials.show_credentials()
@@ -120,7 +120,14 @@ def password_lock():
         elif logged_in == "4":
             print("Enter your credentials to search ")
             user_account = input("Enter your account name: ")
-            search_credentials(user_account)
+            if search_credentials(user_account):
+                search_result = search_credentials(user_account)
+                print(f'name : {search_result.user_name} password : {search_result.password}')
+                print('-' * 50)
+            else:
+                print('the account is non existent \n')
+            
+                
         elif logged_in == "2":
             if list_credentials():
                 print("Nice! Let's display credentials\n")
