@@ -24,6 +24,9 @@ class Credentials:
 
     @classmethod
     def validate_user(cls, user_name, password):
+        '''
+        check whether a user exists
+        '''
         validate_user = ''
         for user in User.users_list:
             if user.user_name == user_name and user.password == password:
@@ -32,6 +35,18 @@ class Credentials:
     
     
     def save_credentials(self):
+        '''
+        add new credential to credentials_list
+        '''
         Credentials.credentials_list.append(self)
 
+    def search_user_credentials(cls, account):
+        '''
+        this method searches users credentials
+        '''
     
+    def display_credentials(cls):
+        '''
+        function displays user credentials
+        '''
+        return cls.credentials_list
