@@ -43,14 +43,14 @@ class Credentials:
 
         Credentials.credentials_list.append(self)
 
-    def search_user_credentials(cls, account):
+    def search_user_credentials(cls, user_account):
 
         '''
         this method searches users credentials
         '''
         
         for credentials_list in cls.credentials_list:
-            if credentials_list.account == account:
+            if credentials_list.account == user_account:
                 return credentials_list.__repr__()
     
     def display_credentials(cls):
@@ -62,24 +62,24 @@ class Credentials:
 
         return cls.credentials_list
     
-    def check_credentials_existence(cls, account):
+    def check_credentials_existence(cls, user_account):
         '''
         check credentials existence in the list
         '''
 
         for credentials_list in cls.credentials_list:
-            if credentials_list.account == account:
+            if credentials_list.account == user_account:
                 return True
             return False
     
-    def delete_credentials_account(cls, account):
+    def delete_credentials_account(cls, user_account):
         '''
         delete a credentials account
         '''
         
         for credentials_list in cls.credentials_list:
-            if credentials_list.account == account:
-                cls.credentials_list.remove(account)
+            if credentials_list.account == user_account:
+                cls.credentials_list.remove(user_account)
                 return cls.credentials_list
     
     def generate_password(length=6):
