@@ -1,5 +1,6 @@
 from .user import User
 import string
+import random
 
 class Credentials:
     '''
@@ -66,4 +67,6 @@ class Credentials:
                 cls.credentials_list.remove(account)
                 return cls.credentials_list
     
-    
+    def generate_password(length=6):
+        password = string.ascii_lowercase + string.digits + string.ascii_uppercase + "'@#!&*$`"
+        return ''.join(random.choice(password) for _ in range(length))
