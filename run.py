@@ -80,6 +80,17 @@ def password_lock():
             save_new_user(create_new_user(user_name, password))
             print(f"Hi {user_name} you account is ready use thispassword:  {password} to login")
         
-    elif user_input == 2:
+    elif user_input == '2':
         print('Enter your details to login')
-        
+        user_name = input('enter your user name')
+        password = input('Input your password')
+
+        validated_user = acc_login(user_name,password)
+        if validated_user == acc_login(user_name, password):
+            print('Hi {user_name} login was succesful')
+        else:
+            print('enter correct details and ensure you have an account')
+
+    while True:
+        succes_login = '''
+        Enter 1 to create '''        
