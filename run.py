@@ -10,7 +10,7 @@ def create_new_user(user_name, password):
     return new_user
 
 def save_new_user(user):
-    user.save_user
+    user.save_this_user
 
 def show_user(user):
     '''
@@ -42,7 +42,7 @@ def search_credentials(user_account):
     return Credentials.search_user_credentials(user_account)
 
 def list_credentials():
-    return Credentials.display_credentials()
+    return Credentials.show_credentials()
 
 def generate_pass():
     auto_gen_password = Credentials.generate_password()
@@ -61,7 +61,7 @@ def password_lock():
 
     if user_input ==  '1':
         print('enter your details below to create a new account')
-        user_name = ('enter prefered user_name ')
+        user_name = input('enter prefered user_name ')
 
         while True:
             pass_input = '''
@@ -73,12 +73,13 @@ def password_lock():
                 password = input('Create your pasword:')
             elif response  == '2':
                 password = generate_pass()
-                break
+                
             else:
                 print("password can't be empty")
             
             save_new_user(create_new_user(user_name, password))
             print(f"Hi {user_name} you account is ready use thispassword:  {password} to login")
+            break
         
     elif user_input == '2':
         print('Enter your details to login')
@@ -92,5 +93,47 @@ def password_lock():
             print('enter correct details and ensure you have an account')
 
     while True:
-        succes_login = '''
-        Enter 1 to create '''        
+        success_login = '''
+        Enter 1 to create new credentials \n
+        Enter 2 to display credentials \n
+        Enter 3 to delete your credentials \n
+        Enter 4 to search credentials \n
+        '''
+        logged_in = input(success_login).lower().strip()
+        if logged_in == "1":
+            print("Enter your  info to create a new credentials")
+            user_account = input("Enter your account name: ")
+            user_name = input("Enter your username: ")
+            password_message = """
+            Enter 1 to create a password for the account\n
+            Enter 2  to generate password\n
+            """
+            this_response = input(password_message).lower().strip()
+            if this_response == "1":
+                password = input("Enter your password: ")
+                print(f'Your credentials for {user_account} has been created')
+            elif this_response == "2":
+                password = generate_pass()
+            save_credentials(create_credentials(user_account, user_name, password))
+            print(f'Credentials for {user_account} created')
+
+        elif logged_in == "4":
+            print("Enter your credentials to search ")
+            user_account = input("Enter your account name: ")
+            search_credentials(user_account)
+        elif logged_in == "2":
+            if list_credentials():
+                print("Nice! Let's display credentials\n")
+                print("Here's a list of all your credentials\n")
+                for credential_list in list_credentials():
+                    print(f'Account: {credential_list.user_account}\nUsername: {credential_list.user_name}\nPassword: {credential_list.password} \n')
+            else:
+                print("You don't have any credentials saved yet")
+        elif logged_in== "3":
+            print("Great! Let's delete credentials")
+            user_account = input("Enter your account name: ")
+            delete_credentials(user_account)
+
+
+if __name__ == '__main__':
+    password_lock()        

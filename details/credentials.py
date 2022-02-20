@@ -53,7 +53,8 @@ class Credentials:
             if credentials_list.account == user_account:
                 return credentials_list.__repr__()
     
-    def display_credentials(cls):
+    @classmethod
+    def show_credentials(cls):
 
         '''
         function displays user credentials
