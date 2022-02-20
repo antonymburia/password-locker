@@ -1,5 +1,6 @@
 from details.user import User
 from details.credentials import Credentials
+import sys
 
 def create_new_user(user_name, password):
     '''
@@ -22,8 +23,10 @@ def acc_login(user_name, password):
     '''
     this function validates user login by calling the validate function in the credentials class
     '''
-    validated_user = Credentials.validate_user(user_name, password)
-    return validated_user
+    return User.validate_user(user_name, password)
+    # validated_user = Credentials.validate_user(user_name, password)
+    # return validated_user
+    # return Credentials.search_user_credentials(credentials_list)
 
 def create_credentials(user_account,user_name, password):
     '''
@@ -86,11 +89,16 @@ def password_lock():
         user_name = input('enter your user name')
         password = input('Input your password')
 
-        validated_user = acc_login(user_name,password)
-        if validated_user == acc_login(user_name, password):
-            print('Hi {user_name} login was succesful')
+        if acc_login(user_name, password):
+            acc = acc_login(user_name, password)
+            print('welcome {acc.user_name} login was successful')
+
+        # validated_user = acc_login(user_name,password)
+        # if validated_user == acc_login(user_name, password):
+        #     print('Hi {user_name} login was succesful')
         else:
             print('enter correct details and ensure you have an account')
+            sys.exit("create an account and try again")
 
     while True:
         success_login = '''

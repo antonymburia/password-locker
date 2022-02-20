@@ -41,4 +41,12 @@ class User:
             if user.user_name == user_name:
                 return user_name
 
-    
+    @classmethod
+    def validate_user(cls,user_name, password):
+        '''
+        this functions validates user login
+        '''
+        for user in cls.users_list:
+            if user.user_name == user_name and user.password == password:
+                return True
+            return False
