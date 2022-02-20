@@ -50,3 +50,14 @@ class Credentials:
         function displays user credentials
         '''
         return cls.credentials_list
+    
+    def check_credentials_existence(cls, account):
+        '''
+        check credentials existence in the list
+        '''
+        for credentials_list in cls.credentials_list:
+            if credentials_list.account == account:
+                return True
+            return False
+    
+    
