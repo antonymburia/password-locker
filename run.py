@@ -47,4 +47,39 @@ def list_credentials():
 def generate_pass():
     auto_gen_password = Credentials.generate_password()
     return auto_gen_password
-    
+
+def password_lock():
+    output = '''
+    Welcome to Pass Lock \n
+    Select an option below \n
+    Enter 1 to create a pass Lock account \n
+    Enter 2 if you already have an existing account \n
+    '''
+
+    user_input =input(output).lower().strip()
+    print(user_input)
+
+    if user_input ==  '1':
+        print('enter your details below to create a new account')
+        user_name = ('enter prefered user_name ')
+
+        while True:
+            pass_input = '''
+            press 1 to create a password for the account \n
+            press 2 to auto-generate a password \n
+            '''
+            response = input(pass_input).lower().strip()
+            if response =='1':
+                password = input('Create your pasword:')
+            elif response  == '2':
+                password = generate_pass()
+                break
+            else:
+                print("password can't be empty")
+            
+            save_new_user(create_new_user(user_name, password))
+            print(f"Hi {user_name} you account is ready use thispassword:  {password} to login")
+        
+    elif user_input == 2:
+        print('Enter your details to login')
+        
