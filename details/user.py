@@ -41,9 +41,4 @@ class User:
             if user.user_name == user_name:
                 return user_name
 
-    def delete_user(cls, user_name):
-        for user in cls.users_list:
-            if user.user_name == user_name:
-                cls.users_list.remove(user)
-                return True
-            return False
+    
