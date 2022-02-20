@@ -53,8 +53,7 @@ def generate_pass():
 
 def password_lock():
     output = '''
-    Welcome to Pass Lock \n
-    Select an option below \n
+    Welcome to Pass Lock Select an option below \n
     Enter 1 to create a pass Lock account \n
     Enter 2 if you already have an existing account \n
     '''
@@ -86,19 +85,23 @@ def password_lock():
         
     elif user_input == '2':
         print('Enter your details to login')
-        user_name = input('enter your user name')
-        password = input('Input your password')
+        user_name = input('enter your user name \n')
+        print('-' * 20)
+        password = input('Input your password \n')
+        print('-' * 20)
+        
 
-        if acc_login(user_name, password):
-            acc = acc_login(user_name, password)
-            print('welcome {acc.user_name} login was successful')
+        if acc_login(user_name,password):
+            
+            print('welcome {user_name} login was successful')
 
         # validated_user = acc_login(user_name,password)
         # if validated_user == acc_login(user_name, password):
         #     print('Hi {user_name} login was succesful')
         else:
-            print('enter correct details and ensure you have an account')
-            sys.exit("create an account and try again")
+            print('Pass Lock account not found enter correct details or create an account')
+            # sys.exit("create an account and try again")
+            return password_lock()
 
     while True:
         success_login = '''
@@ -131,7 +134,7 @@ def password_lock():
             if search_credentials(user_account):
                 search_result = search_credentials(user_account)
                 print(f'name : {search_result.user_name} password : {search_result.password}')
-                print('-' * 50)
+                print('-' * 20)
             else:
                 print('the account is non existent \n')
             
