@@ -11,6 +11,9 @@ This is a simple app where users can store their password and create  new passwo
 The application requires the following instalations to run
 * python3.8
 * pip
+* Clone the project repository from https://github.com/antonymburia/password-locker.git
+* Open the project folder on terminal
+* Type python3.8 run.py to run the application
 
 ## Technologies Used
 * Python
